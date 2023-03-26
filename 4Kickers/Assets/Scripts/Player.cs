@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using StarterAssets;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI goalText;
     private StarterAssetsInputs starterAssetsInputs;
     private Animator animator;
     private Ball ballAttachedToPlayer;
     private float timeShot = -1f;
     public const int ANIMATION_LAYER_SHOOT = 1;
+    private int myScore, otherScore = 0;
+    private float goalTextAlpha;
 
     public Ball BallAttachedToPlayer { get => ballAttachedToPlayer; set => ballAttachedToPlayer = value; }
 
@@ -54,5 +59,27 @@ public class Player : MonoBehaviour
         {
             animator.SetLayerWeight(ANIMATION_LAYER_SHOOT, Mathf.Lerp(animator.GetLayerWeight(ANIMATION_LAYER_SHOOT), 0f, Time.deltaTime * 10f));
         }
+
+        if(goalTextAlpha > 0)
+        {
+            goalTextAlpha -= Time.deltaTime;
+            goalText.alpha = goalTextAlpha;
+            goalText.fontSize = 200 - (goalTextAlpha * 1 - 0);
+        }
+    }
+
+    public void increaseMyScore()
+    {
+        myScore++;
+        scoreText.text = "SCORE: " + myScore.ToString() + " - " + otherScore.ToString();
+        goalTextAlpha = 1f;
+    }
+
+    public void increaseOtherScore()
+    {
+        otherScore++;
+        scoreText.text = "SCORE: " + myScore.ToString() + " - " + otherScore.ToString();
+        goalTextAlpha = 1f;
+
     }
 }
