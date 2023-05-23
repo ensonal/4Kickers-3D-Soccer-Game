@@ -354,14 +354,14 @@ public class Game : MonoBehaviour
     {
         if (gameState == GameState_.Playing )
         {
-            if (scriptBall.transform.position.x > 0)
-            {
-                teams[0].Stats.BallOnHalf++;
-            }
-            else
-            {
-                teams[1].Stats.BallOnHalf++;
-            }
+            //if (scriptBall.transform.position.x > 0)
+            //{
+            //    teams[0].Stats.BallOnHalf++;
+            //}
+            //else
+            //{
+            //    teams[1].Stats.BallOnHalf++;
+            //}
             if (PlayerWithBall != null && PlayerWithBall.Team.Number == 0)
             {
                 teams[0].Stats.BallPosession++;
@@ -479,7 +479,6 @@ public class Game : MonoBehaviour
             player.HasBall = true;
             playerLastTouchedBall = playerWithBall;
             teamLastTouched = teamWithBall = playerWithBall.Team;
-            textPlayer.text = playerWithBall.name;
         }
         else
         {

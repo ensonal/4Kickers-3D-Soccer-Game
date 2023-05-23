@@ -210,8 +210,8 @@ public class Ball : MonoBehaviour
 
         if (transform.position.x > 15 && speed.x > 10 && Game.Instance.TeamLastTouched.Number == 1)
         {
-            Game.Instance.GoalKeeperCameraTeam0.enabled = true;
-            ((HumanPlayer)Game.Instance.Teams[0].GoalKeeper).Activate();
+            //Game.Instance.GoalKeeperCameraTeam0.enabled = true;
+            //((HumanPlayer)Game.Instance.Teams[0].GoalKeeper).Activate();
         }
     }
 
